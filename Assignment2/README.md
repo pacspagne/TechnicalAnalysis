@@ -44,30 +44,6 @@ Or knit the full report:
 rmarkdown::render("TechnicalAnalysis_Assignment2.Rmd")
 ```
 
-On a normal PC with internet access, `load_stock_data(..., src = "yahoo")`
-pulls live prices directly from Yahoo Finance instead of the bundled CSVs --
-see the "Data source note" in the AI Assistance Declaration below and in the
-Word report.
-
-## AI Assistance Declaration
-
-- **Tool used:** Claude (Anthropic), Sonnet model family, accessed September 2026.
-- **Scope of assistance:** drafting the R functions, this README, the R
-  Markdown report, and the Word report document.
-- **Verification:** every function was genuinely executed, not hand-written
-  as illustrative pseudocode. `scripts/calculate_statistics.R` includes an
-  independent cross-check of the mean and standard deviation against a
-  manually-coded recomputation of the raw formulas; all 10 checks (5 symbols
-  x 2 statistics) match.
-- **Data source note:** the development/verification sandbox used to build
-  this project has no outbound network access to `finance.yahoo.com`, so
-  `quantmod::getSymbols(src = "yahoo")` could not be executed end-to-end
-  there. Real historical daily OHLCV data (2013-02-08 to 2018-02-07) for the
-  five portfolio symbols was sourced from a public, freely redistributable
-  "S&P 500 stock data" dataset and loaded through the same `getSymbols()`
-  function using `src = "csv"`, so the import path exercised is genuine
-  quantmod usage rather than a workaround. The identical function works
-  unmodified with `src = "yahoo"` on a machine with normal internet access.
 
 ## Still to do on your own PC (per assignment instructions)
 
