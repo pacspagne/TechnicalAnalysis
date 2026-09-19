@@ -1,0 +1,10 @@
+
+AAPL  |  Feb 07, 2018  |  Close: $159.54  DOWN 3.49 (2.14%)  |  Day Range: $159.07 - $163.40  |  Volume: 51,608,580
+
+MSFT  |  Feb 07, 2018  |  Close: $89.61  DOWN 1.72 (1.88%)  |  Day Range: $89.20 - $91.77  |  Volume: 41,107,592
+
+GOOGL  |  Feb 07, 2018  |  Close: $1055.41  DOWN 29.02 (2.68%)  |  Day Range: $1054.62 - $1086.53  |  Volume: 2,597,094
+
+AMZN  |  Feb 07, 2018  |  Close: $1416.78  DOWN 26.06 (1.81%)  |  Day Range: $1415.15 - $1460.99  |  Volume: 7,162,741
+
+JPM  |  Feb 07, 2018  |  Close: $112.87  UP 0.76 (0.68%)  |  Day Range: $111.15 - $114.45  |  Volume: 21,878,324

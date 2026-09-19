@@ -1,0 +1,5 @@
+AAPL   | R mean=109.0667  manual mean=109.0667  match=TRUE | R sd=30.5568  manual sd=30.5568  match=TRUE
+MSFT   | R mean=51.0631  manual mean=51.0631  match=TRUE | R sd=14.8521  manual sd=14.8521  match=TRUE
+GOOGL  | R mean=682.2338  manual mean=682.2338  match=TRUE | R sd=187.5739  manual sd=187.5739  match=TRUE
+AMZN   | R mean=576.8800  manual mean=576.8800  match=TRUE | R sd=282.5004  manual sd=282.5004  match=TRUE
+JPM    | R mean=67.6432  manual mean=67.6432  match=TRUE | R sd=15.7642  manual sd=15.7642  match=TRUE

@@ -1,0 +1,141 @@
+---
+title: "BDA400 Assignment 2 -- Technical Analysis using R (Preliminary Stage)"
+author: "Onuegbo Nnaemeka Philip"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    theme: cerulean
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+---
+
+## 1. Project Configuration
+
+Portfolio symbols tracked in `portfolio.txt`:
+
+```{r portfolio}
+symbols <- readLines("portfolio.txt")
+symbols
+```
+
+## 2. Loading Stock Data
+
+```{r load-data}
+source("scripts/load_stock_data.R")
+stocks <- load_stock_data(portfolio_file = "portfolio.txt", data_dir = "data", src = "csv")
+
+cat("Symbols loaded:", paste(names(stocks), collapse = ", "), "\n")
+cat("Rows per symbol:\n")
+sapply(stocks, nrow)
+```
+
+Preview of the AAPL data frame (first 6 rows):
+
+```{r preview}
+head(stocks[["AAPL"]])
+```
+
+## 3. Computing Statistics
+
+```{r stats}
+source("scripts/calculate_statistics.R")
+
+all_summaries <- data.frame()
+all_ma <- list()
+
+for (sym in names(stocks)) {
+  result <- calculate_statistics(stocks[[sym]], symbol = sym, ma_periods = c(20, 50))
+  all_summaries <- rbind(all_summaries, result$summary)
+  all_ma[[sym]] <- result$moving_averages
+}
+
+knitr::kable(all_summaries, digits = 2,
+             caption = "Descriptive statistics for each portfolio stock (Close price)")
+```
+
+### Cross-check (independent verification)
+
+```{r crosscheck}
+for (sym in names(stocks)) {
+  close_vals <- stocks[[sym]]$Close
+  n <- length(close_vals)
+  manual_mean <- sum(close_vals) / n
+  manual_sd <- sqrt(sum((close_vals - manual_mean)^2) / (n - 1))
+
+  r_mean <- mean(close_vals)
+  r_sd <- sd(close_vals)
+
+  cat(sprintf("%-6s | R mean=%.4f  manual mean=%.4f  match=%s | R sd=%.4f  manual sd=%.4f  match=%s\n",
+              sym, r_mean, manual_mean, isTRUE(all.equal(r_mean, manual_mean)),
+              r_sd, manual_sd, isTRUE(all.equal(r_sd, manual_sd))))
+}
+```
+
+Both the mean and standard deviation computed by R's built-in `mean()`/`sd()` functions
+match an independent, manually-coded recomputation for every symbol, satisfying the
+course's required verification pattern (primary calculation + independent cross-check).
+
+## 4. Displaying Imported Data
+
+```{r display, results='hold'}
+source("scripts/display_output.R")
+
+for (sym in names(stocks)) {
+  display_latest_quote(stocks[[sym]], symbol = sym)
+}
+```
+
+### Most recent 10 trading days -- AAPL
+
+```{r display-table}
+display_price_table(stocks[["AAPL"]], symbol = "AAPL", n = 10)
+```
+
+## 5. Visualizations
+
+### 5.1 Closing price with 20-day / 50-day moving averages
+
+```{r chart-line, fig.width=9, fig.height=5}
+ma_df <- all_ma[["AAPL"]]
+ma_cols <- grep("^SMA_", names(ma_df), value = TRUE)
+plot(ma_df$Date, ma_df$Close, type = "l", col = "black", lwd = 1.2,
+     xlab = "Date", ylab = "Price (USD)",
+     main = "AAPL -- Closing Price with Moving Averages")
+lines(ma_df$Date, ma_df$SMA_20, col = "blue", lwd = 1.5)
+lines(ma_df$Date, ma_df$SMA_50, col = "red", lwd = 1.5)
+legend("topleft", legend = c("Close", "SMA 20", "SMA 50"),
+       col = c("black", "blue", "red"), lty = 1, lwd = 1.5)
+```
+
+### 5.2 OHLC candlestick chart (last 180 trading days)
+
+```{r chart-candles, fig.width=9, fig.height=6}
+library(quantmod)
+xts_obj <- xts::xts(stocks[["AAPL"]][, c("Open","High","Low","Close","Volume")],
+                     order.by = stocks[["AAPL"]]$Date)
+colnames(xts_obj) <- paste0("AAPL", c(".Open",".High",".Low",".Close",".Volume"))
+chartSeries(tail(xts_obj, 180), name = "AAPL", theme = chartTheme("white"),
+            TA = "addSMA(n=20, col='blue'); addSMA(n=50, col='red'); addVo()")
+```
+
+## 6. Full Portfolio Statistics Table
+
+```{r final-table}
+display_statistics_table(all_summaries)
+```
+
+---
+
+## Appendix A: Steps Completed Outside R (documented with screenshots in the Word report)
+
+1. GitHub account created and `TechnicalAnalysis` repository set up.
+2. R and RStudio installed locally.
+3. `quantmod` and `TTR` packages installed via `install.packages()`.
+4. `portfolio.txt` created with 5 stock symbols.
+
+See `Nnaemeka_BDA400_A02_Report.docx` for the full step-by-step walkthrough with screenshots.
