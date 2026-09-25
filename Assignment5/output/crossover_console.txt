@@ -1,0 +1,8 @@
+crossover(arr1, arr2):
+[1] "None" "None" "None" "Up"   "None" "None" "None" "None" "None"
+
+Spot-check -- index 4 should be 'Up' (arr1 crosses above arr2): TRUE 
+arr1[3:4] = 15 20 | arr2[3:4] = 22 18 
+
+Edge case -- mismatched array lengths:
+Correctly rejected: Both arrays should have the same length 

@@ -1,0 +1,9 @@
+k_line:
+ [1]        NA        NA        NA        NA        NA 0.4665012 0.7917450
+ [8] 0.7674736 0.7510282 0.6074041 0.6930615 0.7924985 0.8211507
+
+d_line:
+ [1]        NA        NA        NA        NA        NA 0.6752399 0.7700822
+ [8] 0.7086353 0.6838313 0.6976547 0.7689036
+
+Cross-check -- k_line matches independently recomputed normalization + sma(): TRUE 

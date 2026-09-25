@@ -1,0 +1,9 @@
+rsi(data, period = 5):
+ [1]       NA       NA       NA       NA       NA 50.52632 68.92562 71.83521
+ [9] 78.21079 66.85966
+
+Cross-check -- step A avg_gain/avg_loss (first 5 diffs): 2.4 / 1.6 
+Cross-check -- step B avg_gain/avg_loss (after first smoothing pass): 1.92 / 1.88 
+Manually computed RSI at index 6: 50.52632 | function's rsi_values[6]: 50.52632 | match: TRUE 
+
+RSI values are all NA for indices 1 to period (5), as expected: TRUE 

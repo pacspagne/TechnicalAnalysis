@@ -1,0 +1,11 @@
+macd_line:
+[1] 0.0000000 0.8333333 1.8055556 2.6620370 3.3371914 3.8393776 4.2002100
+
+signal_line:
+[1] 0.0000000 0.5555556 1.3888889 2.2376543 2.9706790 3.5498114 3.9834105
+
+histogram:
+[1] 0.0000000 0.2777778 0.4166667 0.4243827 0.3665123 0.2895662 0.2167996
+
+Cross-check -- macd_line matches independently-recomputed EMA difference: TRUE 
+Cross-check -- histogram == macd_line - signal_line for every element: TRUE 

@@ -1,0 +1,14 @@
+slope: 2.342857 
+intercept: 105.8 
+predicted_values:
+[1] 108.1429 110.4857 112.8286 115.1714 117.5143 119.8571
+
+Cross-check against R's lm() on the same data subset:
+lm() slope: 2.342857 | linreg() slope: 2.342857 | match: TRUE 
+lm() intercept: 105.8 | linreg() intercept: 105.8 | match: TRUE 
+
+Edge case -- regressionLength > length(data):
+Correctly rejected: regressionLength cannot be greater than the number of elements in regressionSource 
+
+Edge case -- regressionOffset >= regressionLength:
+Correctly rejected: regressionOffset must be less than regressionLength 

@@ -1,0 +1,4 @@
+stdev(data): 4.946629 
+R's sd() [sample, /n-1]: 5.246692 
+R's sd() converted to population [/n]: 4.946629 
+Match against population-adjusted sd()? TRUE 

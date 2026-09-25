@@ -1,0 +1,7 @@
+sma(data, period = 3):
+[1] 12.33333 15.66667 17.66667 20.00000 21.66667 23.66667 23.33333
+
+Manual cross-check of sma_result[1]: mean(c(10,12,15)) = 12.33333 | sma_result[1] = 12.33333 | match: TRUE 
+
+Edge case -- period > length(data):
+Correctly rejected: Data length should be greater than or equal to the period 

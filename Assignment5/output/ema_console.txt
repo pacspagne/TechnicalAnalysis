@@ -1,0 +1,6 @@
+ema(data, period = 3):
+[1] 10.00000 11.00000 13.00000 16.50000 17.25000 19.62500 22.31250 23.15625
+[9] 22.07812
+
+Manual cross-check -- ema_result[1] == data[1]: TRUE 
+Manual cross-check -- ema_result[2] == manual calc: TRUE (manual = 11 , function = 11 )

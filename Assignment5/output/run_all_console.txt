@@ -1,0 +1,43 @@
+Loaded 1259 rows of real AAPL data ( 2013-02-08 to 2018-02-07 )
+
+=== SMA (20-day) on AAPL Close -- last 5 values ===
+[1] 173.8700 173.2435 172.3180 171.7520 171.0125
+
+=== EMA (20-day) on AAPL Close -- last 5 values ===
+[1] 172.2638 171.1435 169.7479 169.1081 168.1968
+
+=== MACD (12, 26, 9) on AAPL Close -- last 5 values ===
+macd_line (tail):
+[1] -1.249257 -2.012771 -2.907914 -3.054389 -3.412745
+signal_line (tail):
+[1] -0.03599559 -0.43135069 -0.92666336 -1.35220846 -1.76431578
+histogram (tail):
+[1] -1.213262 -1.581420 -1.981251 -1.702180 -1.648429
+
+=== Standard Deviation of AAPL Close (whole series) ===
+stdev(close): 30.54467 
+Cross-check vs R's sd() [adjusted for population vs sample]: 30.54467 
+
+=== Linear Regression on last 30 days of AAPL Close ===
+slope: -0.3316935 ( downtrend )
+intercept: 176.8535 
+
+=== RSI (14-day) on AAPL Close -- last 5 values ===
+[1] 35.76581 24.83630 21.02506 37.79172 33.68221
+Interpretation: RSI > 70 = overbought, RSI < 30 = oversold
+
+=== Stochastic RSI on AAPL Close -- last 5 values ===
+%K (tail):
+[1] 0.2483454 0.2125617 0.1523824 0.1614446 0.2010133
+%D (tail):
+[1] 0.2558859 0.2346313 0.2044298 0.1754629 0.1716134
+
+=== Crossover / Crossunder: SMA(20) vs SMA(50) on AAPL ===
+Number of 'golden cross' (SMA20 crosses above SMA50) signals: 15 
+Number of 'death cross' (SMA20 crosses below SMA50) signals: 15 
+Dates of the last 3 golden cross signals:
+[1] "2016-12-22" "2017-08-01" "2017-11-01"
+
+=== VERIFICATION SUMMARY ===
+All 9 indicators ran successfully against 1259 rows of real AAPL data.
+No errors or NA-propagation issues in the final tail values shown above.

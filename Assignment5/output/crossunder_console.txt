@@ -1,0 +1,10 @@
+crossunder(arr1, arr2):
+[1] "None"  "False" "False" "False" "False" "False" "False" "True"  "False"
+
+First 'True' crossunder at index: 8 
+arr1[(first_true_index-1):first_true_index] = 11 9 
+arr2[(first_true_index-1):first_true_index] = 10 11 
+Confirms arr1 was >= arr2 previously and < arr2 now: TRUE 
+
+Edge case -- mismatched array lengths:
+Correctly rejected: Both arrays should have the same length 
