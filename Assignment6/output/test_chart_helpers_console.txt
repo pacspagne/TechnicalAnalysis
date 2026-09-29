@@ -1,0 +1,55 @@
+======================================================================
+STEP 1 CHECK -- real data loads correctly (see load_data.R output above)
+======================================================================
+
+======================================================================
+STEP 2 CHECK -- filtering + data.frame conversion
+======================================================================
+Filtered to 277 rows, from 2017-01-03 to 2018-02-07 
+Cross-check -- row count via filter_stock_data(): 277 | via manual xts subset: 277 | match: TRUE 
+
+Weekly aggregation: 58 rows (should be far fewer than 277 daily rows) -- TRUE 
+
+======================================================================
+STEP 3 CHECK -- indicator overlays produce sane, non-degenerate values
+======================================================================
+RSI(14): min = 21.03 max = 92.18 (should be within [0, 100]): TRUE 
+MACD line -- last 3 values: -1.706, -1.798, -2.018 
+Cross-check -- mean absolute difference between TTR::RSI and Assignment 5's own rsi() on the same data (after warm-up): 0.05 (expected to be small, both implement Wilder smoothing): TRUE 
+
+======================================================================
+STEP 4 CHECK -- trading rule signal generation
+======================================================================
+Signal counts:
+signals
+ Buy Hold Sell 
+   2  272    3 
+
+Buy signals: 2 | Sell signals: 3 
+First 'Buy' signal -- via compute_trading_signals(): 146 | via manual stats::filter() crossing check: 146 | match: TRUE 
+
+Spot-check -- rows around the first Buy signal:
+          Date  Close
+145 2017-07-31 148.73
+146 2017-08-01 158.59
+147 2017-08-02 157.14
+Signal at that row: Buy 
+
+======================================================================
+STEP 2/3/4 CHECK -- chart objects build without error
+======================================================================
+Line chart class: gg, ggplot 
+Candlestick chart class: gg, ggplot 
+Area chart class: gg, ggplot 
+RSI chart class: gg, ggplot 
+MACD chart class: gg, ggplot 
+Warning message:
+Removed 14 rows containing missing values (`geom_line()`). 
+Warning messages:
+1: Removed 33 rows containing missing values (`position_stack()`). 
+2: Removed 25 rows containing missing values (`geom_line()`). 
+3: Removed 33 rows containing missing values (`geom_line()`). 
+
+Saved 5 sample charts to output/ for visual verification.
+
+=== ALL CHECKS COMPLETE ===

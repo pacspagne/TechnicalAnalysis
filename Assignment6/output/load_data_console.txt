@@ -1,0 +1,15 @@
+=== Step 1: Data Collection and Setup ===
+Fetched 1259 rows for AAPL from 2013-02-08 to 2018-02-07 
+              Open    High     Low   Close    Volume Adjusted
+2013-02-08 67.7142 68.4014 66.8928 67.8542 158168416  67.8542
+2013-02-11 68.0714 69.2771 67.6071 68.5614 129029425  68.5614
+2013-02-12 68.5014 68.9114 66.8205 66.8428 151829363  66.8428
+              Open   High      Low  Close   Volume Adjusted
+2018-02-05 159.100 163.88 156.0000 156.49 72738522   156.49
+2018-02-06 154.830 163.72 154.0000 163.03 68243838   163.03
+2018-02-07 163.085 163.40 159.0685 159.54 51608580   159.54
+
+Class: xts, zoo 
+Columns: Open, High, Low, Close, Volume, Adjusted 
+
+Cross-check -- Close on 2017-06-01 : raw CSV = 153.18 | via getSymbols() = 153.18 | match: TRUE 
